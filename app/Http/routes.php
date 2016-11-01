@@ -14,3 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+//-------------------- Admin zone ----------------------//
+Route::group(['prefix' => 'admin'], function(){
+	Route::group(['prefix' => 'monhoc'], function(){
+		Route::get('list', [
+			'as' => 'admin.monhoc.list', 
+			'uses' => 'MonHocController@getList'
+		]);
+	});
+});
