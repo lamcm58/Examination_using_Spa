@@ -16,3 +16,10 @@
  Điều kiện: đã có cơ sở dữ liệu phía trên, chưa có dữ liệu gì cả
  
  php artisan db:seed
+
+##Hướng dẫn thêm dữ liệu vào database:
+Tạo mới database "Spa".
+###1. Cách 1:
+ Chạy Migration(hướng dẫn ở trên), sau đó vào phpMyadmin rồi import file spa.sql vào.
+###2. Cách 2:
+ Vào phpMyadmin rồi import thẳng file spa1.sql vào.
