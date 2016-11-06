@@ -17,25 +17,30 @@ Route::get('/', function () {
 
 //-------------------- Admin zone ----------------------//
 Route::group(['prefix' => 'admin'], function(){
-	Route::get('', function(){
-		return view('admin');
+	Route::group(['prefix' => 'monthi'], function(){
+		Route::get('list', ['as' => 'admin.monthi.list','uses' => 'MonThiController@getList']);
+		Route::get('add', ['as' => 'admin.monthi.add','uses' => 'MonThiController@getAdd']);
+		Route::post('add', ['as' => 'admin.monthi.add','uses' => 'MonThiController@postAdd']);
+		Route::get('edit/{id_monthi}', ['as' => 'admin.monthi.edit','uses' => 'MonThiController@getEdit']);
+		Route::post('edit/{id_monthi}', ['as' => 'admin.monthi.edit','uses' => 'MonThiController@postEdit']);
+		Route::get('delete/{id_monthi}', ['as' => 'admin.monthi.delete','uses' => 'MonThiController@getDelete']);
+		Route::get('view/{id_monthi}', ['as' => 'admin.monthi.view','uses' => 'MonThiController@getView']);
 	});
-	Route::group(['prefix' => 'monhoc'], function(){
-		Route::get('list', ['uses' => 'MonHocController@getList']);
-		Route::post('add', ['uses' => 'MonHocController@getAdd']);
-		Route::get('edit/{id_monthi}', ['uses' => 'MonHocController@getEdit']);
-		Route::post('edit/{id_monthi}', ['uses' => 'MonHocController@postEdit']);
-		Route::get('delete/{id_monthi}', ['uses' => 'MonHocController@getDelete']);
+	Route::group(['prefix' => 'dethi'], function(){
+		Route::get('list', ['as' => 'admin.dethi.list','uses' => 'DeThiController@getList']);
+		Route::get('add', ['as' => 'admin.dethi.add','uses' => 'DeThiController@getAdd']);
+		Route::post('add', ['as' => 'admin.dethi.add','uses' => 'DeThiController@postAdd']);
+		Route::get('edit/{id_dethi}', ['as' => 'admin.dethi.edit','uses' => 'DeThiController@getEdit']);
+		Route::post('edit/{id_dethi}', ['as' => 'admin.dethi.edit','uses' => 'DeThiController@postEdit']);
+		Route::get('delete/{id_dethi}', ['as' => 'admin.dethi.delete','uses' => 'DeThiController@getDelete']);
 	});
 	Route::group(['prefix' => 'cauhoi'], function(){
-		Route::get('', function(){
-			return view('admin.cauhoi');
-		});
-		Route::get('list', ['uses' => 'CauHoiController@getList']);
-		Route::post('add', ['uses' => 'CauHoiController@getAdd']);
-		Route::get('edit/{id_cauhoi}', ['uses' => 'CauHoiController@getEdit']);
-		Route::post('edit/{id_cauhoi}', ['uses' => 'CauHoiController@postEdit']);
-		Route::get('delete/{id_cauhoi}', ['uses' => 'CauHoiController@getDelete']);
+		Route::get('list', ['as' => 'admin.cauhoi.list','uses' => 'CauHoiController@getList']);
+		Route::get('add', ['as' => 'admin.cauhoi.add','uses' => 'CauHoiController@getAdd']);
+		Route::post('add', ['as' => 'admin.cauhoi.add','uses' => 'CauHoiController@postAdd']);
+		Route::get('edit/{id_cauhoi}', ['as' => 'admin.cauhoi.edit','uses' => 'CauHoiController@getEdit']);
+		Route::post('edit/{id_cauhoi}', ['as' => 'admin.cauhoi.edit','uses' => 'CauHoiController@postEdit']);
+		Route::get('delete/{id_cauhoi}', ['as' => 'admin.cauhoi.delete','uses' => 'CauHoiController@getDelete']);
 	});
 	Route::group(['prefix' => 'phuongan'], function(){
 		Route::get('list', ['uses' => 'AdminController@getListPhuongAn']);

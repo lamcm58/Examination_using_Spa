@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class CauHoi extends Model
 {
     protected $table = 'cauhoi';
-	protected $fillable = ['ma_cau_hoi', 'ma_mon_hoc', 'noi_dung'];
+	protected $fillable = ['id_cauhoi', 'noi_dung', 'id_dethi'];
 
-	//mon hoc
-	public function monhoc()
+	//de thi
+	public function dethi()
 	{
-		return $this->belongsTo('App\MonHoc');
+		return $this->belongsTo('App\DeThi');
 	}
 
 	//phuong an
