@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="public/css/icon.css">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="public/css/materialize.min.css" media="screen,projection"/>
+
+</head>
+
+<body class="red lighten-5" >
+<div class="container " ng-controller="getListEachMonThiController" >
+
+
+    <div class="row">
+        <div class="col s12" ng-repeat="mh in _monhoc">
+            <div class="card-panel indigo white-text center ">{{ mh.name_monthi }}</div>
+            <ul class="collection">
+                <li class="collection-item avatar" ng-repeat ="mh_child in mh.name_dethi">
+                    <i class="material-icons circle">assignment</i>
+                    <span class="title">{{ mh_child.text}}</span>
+                    <!--<p ng-controller="GetNoCauHoiController ">First Line  : {{ no_cauhoi.length }}<br>-->
+
+                    <!--</p>-->
+                    <a href="#listcauhoi/{{mh.monthi_id}}/{{mh_child.id}}" class="secondary-content"><i class="material-icons">trending_flat</i></a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="<?php echo asset('public/js/jquery-2.1.1.min.js'); ?>  "></script>
+<script type="text/javascript" src="<?php echo asset('public/js/materialize.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo asset('public/js/init.js'); ?>"></script>
+</body>
+</html>

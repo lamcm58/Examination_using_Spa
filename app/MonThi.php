@@ -7,12 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class MonThi extends Model
 {
     protected $table = 'monthi';
-	protected $fillable = ['id_monthi', 'ten_monthi', 'so_dethi'];
-	
-
-	//de thi
-	public function dethi()
-	{
-		return $this->hasMany('App\DeThi');
-	}
+    protected $guarded = [];
+    protected $casts = [
+        'choices' => 'json',
+        'name_dethi' => 'json'
+    ];
 }

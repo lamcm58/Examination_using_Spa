@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="public/css/icon.css">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="public/css/materialize.min.css" media="screen,projection"/>
+
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+
+<body class="red lighten-5" >
+<div class="container " ng-controller ="GetListCauHoiController">
+    <div class="row">
+        <div class="col s12 card-panel" >
+            <div class="row" >
+                <div class="col s9" ng-repeat="lch in _listcauhoi">
+                    <form action="#" class="indigo-text" >
+                        <p>
+                            {{lch.id}}.{{lch.questions}}
+                        </p>
+                        <p ng-repeat= "choices in lch.choices ">
+                            <input name="group1" type="radio" id="test1" class="with-gap"/>
+                            <label for="test1">{{choices.text}}</label>
+                        </p>
+                    </form>
+                    <div class="divider"></div>
+
+                </div>
+
+                <div class="col s3 card-panel indigo white-text">
+
+
+                    <div class="col s12">
+
+                        <h6>Đáp án</h6>
+                        <div class="divider"></div>
+                        <p>
+                            1.A
+                        </p>
+                        <div class="divider"></div>
+                        <p>
+                            2.A
+                        </p>
+                        <div class="divider"></div>
+                        <p>
+                            3.A
+                        </p>
+                        <div class="divider"></div>
+                        <p>
+                            4.A
+                        </p>
+                        <div class="divider"></div>
+                        <p>
+                            5.A
+                        </p>
+                        <div class="divider"></div>
+                        <p>
+                            6.A
+                        </p>
+
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col s12 offset-s4">
+            <a class="btn indigo">Nộp bài</a>
+        </div>
+    </div>
+
+</div>
+
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="<?php echo asset('public/js/jquery-2.1.1.min.js'); ?>  "></script>
+<script type="text/javascript" src="<?php echo asset('public/js/materialize.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo asset('public/js/init.js'); ?>"></script>
+</body>
+</html>

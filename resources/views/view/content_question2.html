@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html >
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Test Your Knowledge: Saturn</title>
+    <link rel="stylesheet" type="text/css" href="public/css/quiz.css">
+
+    <!--Import Google Icon Font-->
+    <link rel="stylesheet" type="text/css" href="public/css/icon.css">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="public/css/materialize.min.css"
+          media="screen,projection"/>
+</head>
+<body>
+
+<div class="container" id="myQuiz" ng-controller="QuizController">
+
+    <h1>Thi Thử Online:<span>Học mãi.vn</span></h1>
+
+    <div class="progress">
+        <div ng-repeat="myQuestion in myQuestions" class="{{ ($index === activeQuestion) ? 'on' : 'off' }}
+				{{ (myQuestion.questionState === 'answered') ? 'answered' : 'unanswered' }}
+				{{ (myQuestion.correctness === 'correct') ? 'correct' : 'incorrect' }}"></div>
+
+    </div>
+    <div class="intro {{ (activeQuestion > -1) ? 'inactive' : 'active' }}" >
+
+        <h2 >Welcome</h2>
+        <p>Nhấn vào Bắt đầu để bắt đầu thi</p>
+        <p class="btn" ng-click="activeQuestion = 0">Bắt đầu</p>
+    </div>
+
+    <div class="question
+				{{ (myQuestion.questionState === 'answered') ? 'answered' : 'unanswered' }}
+				{{ ($index === activeQuestion ? 'active' : 'inactive') }}
+				" ng-repeat="myQuestion in myQuestions">
+
+        <p class="txt">{{ myQuestion.questions }}</p>
+        <p class="ans"
+           ng-repeat="Answer in myQuestions[$index].choices"
+           ng-class="{
+								image:Answer.image,
+								selected:isSelected($parent.$index, $index),
+								correct:isCorrect($parent.$index, $index)
+							  }"
+           ng-style="{ 'background-image':'url({{Answer.image}})'}"
+           ng-click="selectAnswer($parent.$index, $index)">
+            {{Answer.text}}</p>
+
+        <div class="feedback">
+
+            <p ng-show="myQuestion.correctness === 'correct'">Đáp án <strong>đúng.</strong></p>
+            <p ng-show="myQuestion.correctness === 'incorrect'">Đáp án sai.</p>
+            <p>{{myQuestion.feedback}}</p>
+            <div class="btn" ng-click="selectContinue()">Tiếp tục</div>
+
+        </div>
+
+    </div>
+    <div class="results {{ (totalQuestions === activeQuestion) ? 'active' : 'inactive' }}">
+
+        <h3>Kết quả</h3>
+        <p>Bạn đã đạt được {{percentage}}% bằng việc trả lời đúng  {{score}} câu trong số {{totalQuestions}} câu hỏi.</p>
+        <p>Bấm vào nút bên dưới để quay lại trang chủ hoặc chia sẻ điểm trên mạng xã hội.</p>
+        <div class="share" ng-bind-html="createShareLinks(percentage)">
+        </div>
+
+    </div>
+
+</div>
+
+
+</body>
+</html>
